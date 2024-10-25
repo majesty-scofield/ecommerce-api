@@ -1,20 +1,22 @@
-const index = (req, res) => {
+import {Request, Response} from "express";
+
+const index = (req: Request, res: Response) => {
     res.send('Get All Products');
 }
 
-const store = (req, res) => {
+const store = (req: Request, res: Response) => {
     res.send('Create Product');
 }
 
-const show = (req, res) => {
+const show = (req: Request, res: Response) => {
     res.send('Get Product');
 }
 
-const update = (req, res) => {
+const update = (req: Request, res: Response) => {
     res.send('Update Product');
 }
 
-const destroy = (req, res) => {
+const destroy = (req: Request, res: Response) => {
     res.send('Delete Product');
 }
 
