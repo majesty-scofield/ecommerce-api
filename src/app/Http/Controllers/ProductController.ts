@@ -5,7 +5,7 @@ const index = (req: Request, res: Response) => {
 }
 
 const store = (req: Request, res: Response) => {
-    res.send('Create Product');
+    res.send(req.body);
 }
 
 const show = (req: Request, res: Response) => {
