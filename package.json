@@ -5,19 +5,27 @@
   "main": "index.js",
   "scripts": {
     "start": "node --import=tsx --watch src/index.ts",
-    "build": "tsc"
+    "build": "tsc",
+    "db:push": "drizzle-kit push",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:stump": "drizzle-kit studio"
   },
   "author": "InsightifyTech",
   "license": "ISC",
   "description": "",
   "dependencies": {
     "dotenv": "^16.4.5",
-    "express": "^4.21.1"
+    "drizzle-orm": "^0.35.3",
+    "express": "^4.21.1",
+    "pg": "^8.13.1"
   },
   "devDependencies": {
     "@types/express": "^5.0.0",
+    "@types/pg": "^8.11.10",
+    "drizzle-kit": "^0.26.2",
+    "nodemon": "^3.1.7",
     "tsx": "^4.19.1",
-    "typescript": "^5.6.3",
-    "nodemon": "^3.1.7"
+    "typescript": "^5.6.3"
   }
 }
