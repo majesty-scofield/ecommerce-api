@@ -1,14 +1,16 @@
 import express from "express";
 import {products} from "../app/Http/Controllers/ProductController";
 import {orders} from "../app/Http/Controllers/OrderController";
+import {ValidationMiddleware} from "../app/Http/Middleware/ValidationMiddleware";
+import {createProductSchema, updateProductSchema} from "../app/Schema/ProductSchema";
 
 const router = express.Router();
 
 // Product routes
 router.get('/products', products.index);
-router.post('/products', products.store);
+router.post('/products', ValidationMiddleware(createProductSchema), products.store);
 router.get('/products/:id', products.show);
-router.put('/products/:id', products.update);
+router.put('/products/:id', ValidationMiddleware(updateProductSchema), products.update);
 router.delete('/products/:id', products.destroy);
 
 // Order routes

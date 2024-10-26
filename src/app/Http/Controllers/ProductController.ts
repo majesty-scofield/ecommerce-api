@@ -22,7 +22,7 @@ const index = async (req: Request, res: Response) => {
  */
 const store = async (req: Request, res: Response) => {
     try {
-        const [product] = await Product.create(req.body)
+        const [product] = await Product.create(req.cleanBody)
         res.status(201).json(product)
     } catch (e) {
         res.status(500).send(e);
@@ -54,7 +54,7 @@ const show = async (req: Request, res: Response) => {
  */
 const update = async (req: Request, res: Response) => {
     try {
-        const [product] = await Product.update(parseInt(req.params.id), req.body)
+        const [product] = await Product.update(parseInt(req.params.id), req.cleanBody)
         if (!product) {
             res.status(404).send({message: 'Product not found'});
             return;
