@@ -2,7 +2,7 @@ import express, {json, urlencoded} from 'express';
 import dotenv from 'dotenv';
 import router from "./routes";
 
-dotenv.config();
+// dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3001;

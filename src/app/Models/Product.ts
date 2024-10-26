@@ -1,29 +1,50 @@
-import {ProductTable} from "../../db/schema";
+import {product} from "../../db/schema";
+import {db} from "../../db";
+import {eq} from "drizzle-orm";
 
+/**
+ * Get all products
+ */
 const all = () => {
-    return ProductTable.findMany();
+    return db
+        .select()
+        .from(product)
+        .orderBy(product.id, "desc");
 }
 
+/**
+ * Create a new product
+ * @param data
+ */
 const create = (data: any) => {
-    return ProductTable.insert(data);
+    return db.insert(product).values(data).returning();
 }
 
+/**
+ * Get a product by id
+ * @param id
+ */
 const findOrFail = (id: number) => {
-    if (id === undefined) {
-        throw new Error('Id is required');
-    }
-    return ProductTable.find(id);
+    return db.select().from(product).where(eq(product.id, id));
 }
-
+/**
+ * Update a product
+ * @param id
+ * @param data
+ */
 const update = (id: number, data: any) => {
-    return ProductTable.update(id, data);
+    return db.update(product).set(data).where(eq(product.id, id)).returning();
 }
 
+/**
+ * Delete a product
+ * @param id
+ */
 const destroy = (id: number) => {
-    return ProductTable.delete(id);
+    return db.delete(product).where(eq(product.id, id)).returning();
 }
 
-export const products = {
+export const Product = {
     all,
     create,
     findOrFail,

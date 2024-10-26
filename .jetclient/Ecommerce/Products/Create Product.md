@@ -9,7 +9,7 @@ id = '276b9552-3ebc-4c69-8237-543f9cb44ca4'
 type = 'JSON'
 raw = '''
 {
-  "name": "Product 1",
-  "price": 100
+  "name": "Product 2",
+  "price": "200"
 }'''
 ```
